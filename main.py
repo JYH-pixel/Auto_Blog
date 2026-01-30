@@ -7,15 +7,17 @@ import base64
 import io
 from datetime import datetime
 
-# ==============================================================================
-# [보안 변경] 깃허브 설정(Secrets)에서 비밀번호를 가져오도록 변경되었습니다.
-# ==============================================================================
-OPENAI_API_KEY = os.environ["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"]
-WP_URL = os.environ["https://inai1.wpcomstaging.com"]
-WP_USERNAME = os.environ["juyonghan"]
-WP_APP_PASSWORD = os.environ["Niet KCO6 adpZ m6Yo rQDy RD8f"]
-SEARCH_TOPIC = "Large Language Models"
-# ==============================================================================
+# -----------------------------------------------------------
+# [보안 설정] GitHub Secrets에서 값을 가져옵니다.
+# -----------------------------------------------------------
+try:
+    OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+    WP_URL = os.environ["WP_URL"]
+    WP_USERNAME = os.environ["WP_USERNAME"]
+    WP_APP_PASSWORD = os.environ["WP_APP_PASSWORD"]
+except KeyError:
+    print("❌ 에러: GitHub Secrets(환경변수)가 설정되지 않았습니다.")
+    exit(1)
 
 # (아래 코드는 이전과 동일하므로 생략하지 않고 전체가 필요하지만, 
 #  교수님이 Colab에서 성공한 그 로직 그대로입니다. 
