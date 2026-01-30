@@ -6,9 +6,9 @@ import base64
 import io
 from datetime import datetime
 
-# -----------------------------------------------------------
+# ==============================================================================
 # [보안 설정] GitHub Secrets에서 값을 가져옵니다.
-# -----------------------------------------------------------
+# ==============================================================================
 try:
     OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
     WP_URL = os.environ["WP_URL"]
@@ -97,7 +97,6 @@ def step2_generate_blog_text(paper_data):
                 {"role": "user", "content": user_prompt}
             ]
         )
-        # 마크다운 껍데기 제거
         return response.choices[0].message.content.replace("```html", "").replace("```", "").strip()
     except Exception as e:
         print(f"❌ AI 글 생성 오류: {e}"); return None
@@ -189,7 +188,7 @@ if __name__ == "__main__":
     if paper:
         # 2. 글 작성 및 이미지 생성
         blog_html = step2_generate_blog_text(paper)
-        image_data = step2_generate_image(paper) # 이 함수가 복구되었습니다.
+        image_data = step2_generate_image(paper)
         
         media_id = None
         media_url = None
