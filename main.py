@@ -18,6 +18,7 @@ try:
 except KeyError:
     print("❌ 에러: GitHub Secrets(환경변수)가 설정되지 않았습니다.")
     exit(1)
+SEARCH_TOPIC = "Large Language Models" # 검색 주제
 
 # (아래 코드는 이전과 동일하므로 생략하지 않고 전체가 필요하지만, 
 #  교수님이 Colab에서 성공한 그 로직 그대로입니다. 
